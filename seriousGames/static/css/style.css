@@ -1,0 +1,151 @@
+/* Reset de márgenes y rellenos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo completo */
+body, html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/static/images/background.jpg') no-repeat center center/cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Fondo oscuro sobre la imagen */
+.background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /**background-color: rgba(255, 255, 255, 0.3); /* Oscurece ligeramente la imagen */
+    background-color: transparent;
+}
+
+/* Caja del formulario */
+.form-box {
+    background: rgba(255, 255, 255, 0.95); /* Fondo blanco con transparencia */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center; /* Todo el contenido centrado */
+}
+
+/* Título */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Agrupación del formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: center; /* Centra el texto de las etiquetas */
+}
+
+/* Campos de entrada */
+input {
+    padding: 10px;
+    width: 90%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center; /* Centra el texto dentro de los inputs */
+}
+
+/* Botón */
+button {
+    background-color: #5a1bfa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 90%;
+    max-width: 300px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #d300be;
+}
+
+/* Enlace */
+.sign-in-link {
+    display: block;
+    margin-top: 15px;
+    color: #5a1bfa;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.sign-in-link:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal centrado */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Estilos del título */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Contenedor de los botones en línea */
+.game-buttons {
+    display: flex;
+    flex-direction: row; /* Alinear en fila (horizontal) */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Espaciado entre los botones */
+    width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+    margin-top: 20px; /* Añadir algo de espacio superior para mejor vista */
+}
+
+/* Botón de cada juego */
+.game-button button{
+    width: 250px; /* Ancho personalizado */
+    height: 60px; /* Alto personalizado */
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    white-space: nowrap;
+    padding: 0; /* Espaciado interno */
+    background-color: #5a1bfa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.game-buttons button:hover {
+    background-color: #d300be;
+}

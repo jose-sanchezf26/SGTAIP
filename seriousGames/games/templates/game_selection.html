@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Selection</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="background">
+        <div class="form-box">
+            <h2>Select a Game</h2>
+            <div class="game-buttons">
+                <!-- Iterar sobre la lista de juegos -->
+                {% for game in games %}
+                <form action="{% url 'play_game' game %}" method="get">
+                    <button class="game-button" type="submit">{{ game }}</button>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

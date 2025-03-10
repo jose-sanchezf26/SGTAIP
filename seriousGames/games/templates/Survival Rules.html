@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego WebGL</title>
+    <script src="Build/UnityLoader.js"></script>
+</head>
+<body>
+
+    <h1>Bienvenido, {{ username }}</h1> <!-- Django inserta el nombre aquí -->
+
+    <div id="unity-container">
+        <canvas id="unity-canvas"></canvas>
+        <script>
+            var username = "{{ username }}"; // Guardamos el usuario en una variable JS
+
+            var unityInstance = UnityLoader.instantiate("unity-canvas", "Build/YourGame.json", { 
+                onProgress: UnityProgress,
+                Module: {
+                    onRuntimeInitialized: function() {
+                        console.log("Unity WebGL cargado. Enviando usuario: " + username);
+                        unityInstance.SendMessage("FlowManager", "SetUsername", username);
+                    }
+                }
+            });
+        </script>
+    </div>
+
+</body>
+</html>

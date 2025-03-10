@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.sqlite3
+db.sqlite3
+/media/
+
+# Entorno virtual
+venv/
+.venv/
+env/
+.env
+
+# Otros archivos generados automáticamente
+.idea/
+.vscode/
+*.bak
