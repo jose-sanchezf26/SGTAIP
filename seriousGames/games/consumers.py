@@ -57,8 +57,9 @@ class GameConsumer(AsyncWebsocketConsumer):
         # Si ocurre un error, lo capturamos y lo mostramos
             print(f"Error al guardar el mensaje: {e}")
 
-        # # Si es necesario, enviar una respuesta de vuelta al cliente
-        # await self.send(text_data=json.dumps({
-        #     'status': 'ok',
-        #     'message': f'Usuario {user} ha comenzado el juego {self.game_id}'
-        # }))
+        # Si el evento es de cerrar el juego, enviamos mensaje al frontend para redirigir al usuario
+        if event_type == 'sr-log_out':
+            await self.send(text_data=json.dumps({
+                "type": "redirect",
+                "url": "/game_selection/"
+            }))
