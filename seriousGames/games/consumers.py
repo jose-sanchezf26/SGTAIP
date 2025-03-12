@@ -13,6 +13,8 @@ class GameConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         # Obtén el game_id de la URL
         user = self.scope.get('user')
+        self.current_user = "unknown_user"  
+        self.current_session = "unknown_session"  
         print(f"User in connect: {user}")
         
         # Acepta la conexión WebSocket
@@ -23,7 +25,24 @@ class GameConsumer(AsyncWebsocketConsumer):
         #         }))
 
     async def disconnect(self, close_code):
-        # Manejar la desconexión si es necesario
+        user = self.current_user
+        session_id = self.current_session
+        game_message = GameMessage(
+            user=user,
+            session_id=session_id, 
+            game_id="Survival Rules",
+            event_type="sr-log_out",
+            time=datetime.now(),  # Puedes usar la hora que envíes desde el juego o la hora actual
+            data=""
+        )
+        print(game_message)
+        try:
+            # Intentamos guardar el mensaje
+            await database_sync_to_async(game_message.save)()
+            print("Mensaje guardado en la base de datos")
+        except Exception as e:
+        # Si ocurre un error, lo capturamos y lo mostramos
+            print(f"Error al guardar el mensaje: {e}")
         pass
 
     # Recibe un mensaje desde WebSocket
@@ -37,6 +56,8 @@ class GameConsumer(AsyncWebsocketConsumer):
         data = text_data_json.get('data')
         game_id_m = text_data_json.get('gameId')
         session_id = text_data_json.get('sessionId')
+        self.current_user = user
+        self.current_session = session_id
         time = text_data_json.get('time')
 
         # Almacenar el mensaje en la base de datos
@@ -56,10 +77,3 @@ class GameConsumer(AsyncWebsocketConsumer):
         except Exception as e:
         # Si ocurre un error, lo capturamos y lo mostramos
             print(f"Error al guardar el mensaje: {e}")
-
-        # Si el evento es de cerrar el juego, enviamos mensaje al frontend para redirigir al usuario
-        if event_type == 'sr-log_out':
-            await self.send(text_data=json.dumps({
-                "type": "redirect",
-                "url": "/game_selection/"
-            }))

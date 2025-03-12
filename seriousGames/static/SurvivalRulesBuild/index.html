@@ -52,12 +52,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/10-3-2025.loader.js";
+      var loaderUrl = buildUrl + "/12-3-2025.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/10-3-2025.data.gz",
-        frameworkUrl: buildUrl + "/10-3-2025.framework.js.gz",
-        codeUrl: buildUrl + "/10-3-2025.wasm.gz",
+        dataUrl: buildUrl + "/12-3-2025.data.gz",
+        frameworkUrl: buildUrl + "/12-3-2025.framework.js.gz",
+        codeUrl: buildUrl + "/12-3-2025.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "SurvivalRules",
@@ -114,12 +114,10 @@
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
-                      // Obtener el username desde localStorage
-              var username = localStorage.getItem("username");
-              print("Usuario" + username);
-              if (username) 
-                // Pasar el nombre de usuario a Unity
-                unityInstance.SendMessage("GameManager", "SetUsername", username);
+                var username = localStorage.getItem("username");
+                if(username)
+                  unityInstance.SendMessage("FlowManager", "SetUsername", username);
+
               }).catch((message) => {
                 alert(message);
               });
