@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - WildAI</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        .form-box.large {
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .instruction-list {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 6px;
+            list-style-type: disc;
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .centered-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .centered-form form {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="form-box large">
+            <h2>Instalación de WildAI</h2>
+            <p>Antes de ejecutar WildAI, asegúrate de tener instalado <strong>Python 3</strong> y los siguientes paquetes:</p>
+
+            <ul class="instruction-list">
+                <li>pandas</li>
+                <li>scikit-learn (sklearn)</li>
+                <li>joblib</li>
+                <li>seaborn</li>
+                <li>numpy</li>
+                <li>matplotlib (matplotlib.pyplot)</li>
+                <li>imbalanced-learn (imblearn)</li>
+            </ul>
+
+            <p>Se pueden instalar fácilmente con el siguiente comando en tu terminal:</p>
+
+            <div class="code-block">
+                pip install pandas scikit-learn joblib seaborn numpy matplotlib imbalanced-learn
+            </div>
+
+            <div class="centered-form">
+                <form action="{% static 'downloads/WILDAI.zip' %}">
+                    <button class="game-button" type="submit">Descargar WildAI</button>
+                </form>
+                <form action="{% url 'game_selection' %}" method="get">
+                    <button id="exitButton" class="exit-button" type="submit">Salir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

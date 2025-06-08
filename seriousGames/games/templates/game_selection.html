@@ -18,6 +18,9 @@
                     <button class="game-button" type="submit">{{ game }}</button>
                 </form>
                 {% endfor %}
+                <form action="{% url 'wildai_instructions' %}" method="get">
+                    <button class="game-button" type="submit">WildAI</button>
+                </form>
             </div>
         </div>
     </div>
